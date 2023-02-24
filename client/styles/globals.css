@@ -11,3 +11,7 @@
 .library:last-of-type {
   margin-bottom: 0;
 }
+
+.event:last-of-type {
+  margin-right: 0;
+}

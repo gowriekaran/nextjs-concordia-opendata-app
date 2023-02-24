@@ -11,7 +11,7 @@ const meta = {
 };
 const headers = new Headers(meta);
 
-let url = "https://opendata.concordia.ca/API/v1/library/occupancy/";
+let url = "https://opendata.concordia.ca/API/v1/library/";
 let username = process.env.CONCORDIA_API_USER;
 let password = process.env.CONCORDIA_API_PASSWORD;
 
@@ -24,8 +24,14 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", async (req, res) => {
-  fetch(url, {
+app.get("/", (req, res) => {
+  res.status(200).send({
+    message: "Hi",
+  });
+});
+
+app.get("/request", async (req, res) => {
+  fetch(url + req.query.url, {
     method: "GET",
     headers: headers,
   })
