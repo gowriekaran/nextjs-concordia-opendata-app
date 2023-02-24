@@ -9,11 +9,17 @@ const Main = () => {
 
   useEffect(() => {
     if (!fetched) {
-      axios.get(fetchURL).then((response) => {
-        setLibraries(Object.entries(response.data));
-        fetched = true;
-        setLoaded(true);
-      });
+      axios
+        .get(fetchURL, {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        })
+        .then((response) => {
+          setLibraries(Object.entries(response.data));
+          fetched = true;
+          setLoaded(true);
+        });
     }
   }, [fetchURL]);
 
@@ -83,6 +89,9 @@ const Main = () => {
             fill="currentFill"
           />
         </svg>
+        <h1 className="text-2xl uppercase font-bold p-8 text-center text-[#e5a712]">
+          potentially more use of the API to come
+        </h1>
       </div>
     );
   } else {
@@ -93,7 +102,7 @@ const Main = () => {
         </h1>
         {libraries.map((item, id) => (
           <div
-            className="bg-white text-black grid grid-cols-1 p-8 mb-4"
+            className="bg-white text-black grid grid-cols-1 p-8 mb-4 library"
             key={id}
           >
             <h2 className="uppercase font-bold">{item[0]}</h2>
@@ -109,6 +118,9 @@ const Main = () => {
             </h4>
           </div>
         ))}
+        <h1 className="text-2xl uppercase font-bold p-8 text-center text-[#e5a712]">
+          potentially more use of the API to come
+        </h1>
       </div>
     );
   }
