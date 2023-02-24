@@ -1,14 +1,18 @@
 import express, { json } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
+import { Headers } from "node-fetch";
 
 dotenv.config();
+
+const meta = {
+  "Content-Type": "text/xml",
+};
+const headers = new Headers(meta);
 
 let url = "https://opendata.concordia.ca/API/v1/library/occupancy/";
 let username = process.env.CONCORDIA_API_USER;
 let password = process.env.CONCORDIA_API_PASSWORD;
-
-let headers = new Headers();
 
 headers.set(
   "Authorization",
