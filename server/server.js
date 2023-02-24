@@ -2,6 +2,7 @@ import express, { json } from "express";
 import * as dotenv from "dotenv";
 import cors from "cors";
 import { Headers } from "node-fetch";
+import fetch from "node-fetch";
 
 dotenv.config();
 
